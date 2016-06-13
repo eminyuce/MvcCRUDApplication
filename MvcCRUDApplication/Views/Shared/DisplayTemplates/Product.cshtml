@@ -1,0 +1,23 @@
+﻿@model MvcCRUDApplication.Entities.Product
+
+
+@Html.HiddenFor(model => model.ProductId)
+<h2>
+    @Model.Name
+</h2>
+@if (!String.IsNullOrEmpty(Model.Description))
+{ 
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+}
+
+@Html.DisplayFor(model => model.Price)
+<div>
+    @Html.ActionLink("Edit", "SaveOrUpdateProduct", "Products", new { id = Model.ProductId }, new { @class = "btn btn-primary" }) | 
+                @Html.ActionLink("Detail", "ProductDetail", "Products", new { id = Model.ProductId }, new { @class = "btn btn-info" }) | 
+                @Html.ActionLink("Delete", "DeleteProduct", "Products", new { id = Model.ProductId }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you wish to delete?');" })
+</div>

@@ -1,0 +1,41 @@
+﻿ CREATE TABLE [dbo].[test_Products](
+	[ProductId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[Description] [nvarchar](max) NULL,
+	[Price] [float] NULL,
+ CONSTRAINT [PK_test_Products] PRIMARY KEY CLUSTERED 
+(
+	[ProductId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+CREATE PROCEDURE test_SaveOrUpdateProduct
+    (
+      @ProductId INT = 0 ,
+      @Name NVARCHAR(50) = '' ,
+      @Description NVARCHAR(4000) = '' ,
+      @Price FLOAT = 0 
+    )
+AS 
+    BEGIN
+        IF NOT EXISTS ( SELECT  ProductId
+                        FROM    [dbo].[test_Products]
+                        WHERE   ProductId = @ProductId ) 
+            BEGIN
+                INSERT  INTO test_Products
+                        ( [Name], [Description], [Price] )
+                VALUES  ( @Name, @Description, @Price )
+
+                SET @ProductId = SCOPE_IDENTITY()
+            END
+        ELSE 
+            BEGIN
+                UPDATE  test_Products
+                SET     [Name] = @Name ,
+                        [Description] = @Description ,
+                        [Price] = @Price
+                WHERE   [ProductId] = @ProductId;
+            END
+        SELECT  @ProductId AS ProductId
+    END

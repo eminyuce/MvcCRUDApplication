@@ -1,0 +1,52 @@
+﻿@model List<MvcCRUDApplication.Entities.Product>
+
+ 
+@Html.ActionLink("List Display","ListDisplay",null, new { @class = "btn btn-warning btn-block" })
+<p>
+    @Html.ActionLink("Create a new Product", "SaveOrUpdateProduct", new { id = 0 }, new { @class = "btn btn-default" })
+</p>
+<table class='table table-hover table-bordered table-striped'>
+    <tr>
+        <th>ProductId  
+        </th>
+
+        <th>Name  
+        </th>
+
+        <th>Description  
+        </th>
+
+        <th>Price  
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "SaveOrUpdateProduct", new { id = item.ProductId }, new { @class = "btn btn-primary" }) | 
+                @Html.ActionLink("Detail", "ProductDetail", new { id = item.ProductId }, new { @class = "btn btn-info" }) | 
+                @Html.ActionLink("Delete", "DeleteProduct", new { id = item.ProductId }, new { @class = "btn btn-danger" , onclick = "return confirm('Are you sure you wish to delete?');" })
+            </td>
+
+        </tr>
+    }
+</table>

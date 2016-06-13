@@ -1,0 +1,12 @@
+﻿@using MvcCRUDApplication.Entities
+@model List<MvcCRUDApplication.Entities.Product>
+@Html.ActionLink("Table Display","Index",null,new { @class = "btn btn-warning btn-block" })
+<p>
+    @Html.ActionLink("Create a new Product", "SaveOrUpdateProduct", new { id = 0 }, new { @class = "btn btn-default" })
+</p>
+<div>
+    @foreach (Product item in Model)
+    {
+        @Html.DisplayFor(modelItem => item, "Product")  
+    }
+</div>
