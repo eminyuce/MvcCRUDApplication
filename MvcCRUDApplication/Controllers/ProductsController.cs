@@ -10,8 +10,7 @@ namespace MvcCRUDApplication.Controllers
 {
     public class ProductsController : Controller
     {
-        //
-        // GET: /Products/
+         
 
         public ActionResult Index()
         {
