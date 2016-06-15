@@ -1,6 +1,6 @@
 # Asp.Net MVC Simple CRUD Application
  
-A simple Asp.net MVC CRUD application for beginner. I tried to develop it as simple as I can to make it understandable CRUD is an acronym for the four basic types of SQL commands: Create , Read , Update , Delete.
+A simple Asp.net MVC CRUD application for beginners. I tried to develop it as simple as I can to make it understandable CRUD is an acronym for the four basic types of SQL commands: Create , Read , Update , Delete.
 
 Upload necessary packages and set up connection string properly.
 
