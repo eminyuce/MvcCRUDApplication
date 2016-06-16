@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,10 @@ namespace MvcCRUDApplication.Entities
     public class Product
     {
         public int ProductId { get; set; }
+
+
+        [Display(Name = "Product Name")]
+        [Required(ErrorMessage = "Please product name")]
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
