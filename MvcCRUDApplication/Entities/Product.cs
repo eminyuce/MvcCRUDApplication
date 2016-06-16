@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MvcCRUDApplication.Entities
 {
@@ -14,6 +15,7 @@ namespace MvcCRUDApplication.Entities
         [Display(Name = "Product Name")]
         [Required(ErrorMessage = "Please product name")]
         public string Name { get; set; }
+        [AllowHtml]
         public string Description { get; set; }
         public float Price { get; set; }
         public Product()
