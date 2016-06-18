@@ -1,0 +1,62 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<MvcCRUDApplication.Entities.Product>
+@{
+    ViewBag.Title = "ProductPaging";
+    var products = Model;
+}
+
+<h2>ProductPaging</h2>
+
+
+<h2>Traditional Paging</h2>
+
+<p>Example of paging a list:</p>
+
+@Html.PagedListGoToPageForm((IPagedList)products, Url.Action("ProductPaging"))
+
+<h3>List of @products.TotalItemCount Names (Page Size: @products.PageSize, Current Page: @products.PageNumber)</h3>
+<ol start="@products.FirstItemOnPage">
+	@foreach(var i in products){
+		<li>@i</li>
+	}
+</ol>
+
+
+
+<h2>Out-of-the-box Pager Configurations</h2>
+
+<h3>Default Paging Control</h3>
+@Html.PagedListPager((IPagedList)products, page => Url.Action("ProductPaging", new { page }))
+
+<h3>Classic Paging Control (always shows Previous/Next links, but sometimes they are disabled)</h3>
+@Html.PagedListPager((IPagedList)products, page => Url.Action("ProductPaging", new { page }), PagedListRenderOptions.Classic)
+
+<h3>Classic Paging Control (Classic +First and Last links)</h3>
+@Html.PagedListPager((IPagedList)products, page => Url.Action("ProductPaging", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+
+<h3>Minimal Paging Control</h3>
+@Html.PagedListPager((IPagedList)products, page => Url.Action("ProductPaging", new { page }), PagedListRenderOptions.Minimal)
+
+<h3>Minimal Paging Control w/ Page Count Text</h3>
+@Html.PagedListPager((IPagedList)products, page => Url.Action("ProductPaging", new { page }), PagedListRenderOptions.MinimalWithPageCountText)
+
+<h3>Minimal Paging Control w/ Item Count Text</h3>
+@Html.PagedListPager((IPagedList)products, page => Url.Action("ProductPaging", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+
+<h3>Page Numbers Only</h3>
+@Html.PagedListPager((IPagedList)products, page => Url.Action("ProductPaging", new { page }), PagedListRenderOptions.PageNumbersOnly)
+
+<h3>Only Show Five Pages At A Time</h3>
+@Html.PagedListPager((IPagedList)products, page => Url.Action("ProductPaging", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+<h2>Custom Pager Configurations</h2>
+
+<h3>Custom Wording (<em>Spanish Translation Example</em>)</h3>
+@Html.PagedListPager((IPagedList)products, page => Url.Action("ProductPaging", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< Primera", LinkToPreviousPageFormat = "< Anterior", LinkToNextPageFormat = "Siguiente >", LinkToLastPageFormat = "Última >>" })
+
+<h3>Show Range of Items For Each Page</h3>
+@Html.PagedListPager((IPagedList)products, page => Url.Action("ProductPaging", new { page }), new PagedListRenderOptions { FunctionToDisplayEachPageNumber = page => ((page - 1) * products.PageSize + 1).ToString() + "-" + (((page - 1) * products.PageSize) + products.PageSize).ToString(), MaximumPageNumbersToDisplay = 5 })
+
+<h3>Empty PagedList</h3>
+@Html.PagedListPager(new string[0].ToPagedList(1, 10), page => Url.Action("ProductPaging", new { page }))

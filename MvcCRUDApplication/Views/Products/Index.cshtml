@@ -1,6 +1,7 @@
 ﻿@model List<MvcCRUDApplication.Entities.Product>
 
- 
+  
+@Html.ActionLink("List Paging Display","ProductPaging",null, new { @class = "btn btn-warning btn-block" })
 @Html.ActionLink("List Display","ListDisplay",null, new { @class = "btn btn-warning btn-block" })
 <p>
     @Html.ActionLink("Create a new Product", "SaveOrUpdateProduct", new { id = 0 }, new { @class = "btn btn-default" })

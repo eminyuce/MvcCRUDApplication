@@ -44,6 +44,14 @@
       <HintPath>..\packages\NLog.4.4.0-beta11\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -149,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\CRUDSql.txt" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -243,6 +252,7 @@
     <Content Include="Views\Products\ProductDetail.cshtml" />
     <Content Include="Views\Products\ListDisplay.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Product.cshtml" />
+    <Content Include="Views\Products\ProductPaging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
